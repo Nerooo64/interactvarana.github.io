@@ -1,0 +1,148 @@
+
+
+:root {
+  --rotate-duration: 1s;
+  --spacing: 100px;
+}
+
+#blur-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.15); /* optional dim */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 500;
+}
+
+/* When menu is open */
+.menu-open #blur-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.focus-image {
+  position: relative;
+  z-index: 1000;
+}
+@supports not (backdrop-filter: blur(6px)) {
+  #blur-overlay {
+    background: rgba(0,0,0,0.35);
+  }
+}
+img { 
+       -webkit-touch-callout: none;
+       -webkit-user-select: none;
+       -khtml-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+#testul {
+    position: fixed;
+    top: 200px;
+    left: 200px;
+    z-index: 1000;
+}
+#testul img {
+    width: 300px;
+    height: auto;
+    z-index: 1000;
+}
+#cenu-container {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+}
+#cenu-container img{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+}
+.rotazione-primaria {
+    animation: rotazione-primaria 8s infinite linear;
+}
+
+@keyframes rotazione-primaria {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+
+}
+.rotazione-secondaria {
+    animation: rotazione-secondaria 8s infinite linear;
+}
+
+@keyframes rotazione-secondaria {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+
+}
+
+#menu-container {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1000;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#main-btn {
+  width: 80px;
+  height: 80px;
+  transition: transform var(--rotate-duration) ease;
+}
+
+#main-btn img,
+.child img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Minori */
+.child {
+  position: fixed;
+  top: 58px;
+  left: 60px;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.8s ease,
+    opacity 0.6s ease;
+}
+.menu-open #main-btn {
+  transform: rotate(360deg);
+}
+.menu-open .child {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Vaslui */
+.menu-open .r1 { transform: translateX(var(--spacing)); }
+.menu-open .r2 { transform: translateX(calc(var(--spacing) * 2)); }
+.menu-open .r3 { transform: translateX(calc(var(--spacing) * 3)); }
+
+/* Dumbraveni */
+.menu-open .b1 { transform: translateY(var(--spacing)); }
+.menu-open .b2 { transform: translateY(calc(var(--spacing) * 2)); }
+.menu-open .b3 { transform: translateY(calc(var(--spacing) * 3)); }
