@@ -1,9 +1,22 @@
-
-
 :root {
   --rotate-duration: 1s;
-  --spacing: 100px;
+  --spacing: 90px;
 }
+body {
+  touch-action: manipulation;
+}
+@media (max-width: 768px) {
+  #main-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .child {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 
 #blur-overlay {
   position: fixed;
@@ -92,8 +105,8 @@ img {
 
 #menu-container {
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 5vh;
+  left: 5vw;
   z-index: 1000;
 }
 
@@ -146,3 +159,17 @@ button {
 .menu-open .b1 { transform: translateY(var(--spacing)); }
 .menu-open .b2 { transform: translateY(calc(var(--spacing) * 2)); }
 .menu-open .b3 { transform: translateY(calc(var(--spacing) * 3)); }
+
+@media (max-width: 768px) {
+  :root {
+    --spacing: 65px;
+  }
+}
+@media (max-width: 768px) {
+  #menu-container {
+    top: auto;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
